@@ -416,6 +416,7 @@ Weights use `--font-weight-*` tokens only (Codex uses variable-font intermediate
 
 | Token | Value | Usage |
 |---|---|---|
+| `space-0.25` | 1px | Hairline row gaps in dense list rhythms (sidebar session rows, settings rail items) |
 | `space-0.5` | 2px | Tight inline gaps |
 | `space-1` | 4px | Icon-text gaps, badge padding |
 | `space-1.5` | 6px | Compact inner padding |
@@ -1217,9 +1218,10 @@ Full component contract and usage rules: [08-component-spec.md §17](08-componen
 |---|---|
 | **Base padding 8px (space-2)** | Default inner padding for list items, form groups |
 | **Message gap 10px** | Between chat message rows — denser WorkBuddy-like transcript |
-| **Section gap 16px (space-4)** | Between distinct UI sections (sidebar sections, settings groups) |
+| **Section gap 16px (space-4)** | Between distinct UI sections (destination pages, settings groups, page-level blocks) |
 | **Panel gap 0px** | Panels touch edge-to-edge with border-subtle separator — no gutters |
 | **Compact list rows 28px height** | Sidebar session items, settings list rows |
+| **Sidebar rhythm 1px / 2px / 8px** | Sidebar lists: 1px between rows, 2px from a group header or section label to its first row, 8px after an expanded project group and between sidebar sections (1px when the preceding group is collapsed) |
 | **Button rows 32px height** | Standard buttons |
 | **Never exceed 24px vertical gap** | Even for "breathing room" — this is a workstation |
 | **Max content width 720px** | Chat messages, tool disclosure rows — prevent over-wide eye-span |

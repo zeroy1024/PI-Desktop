@@ -5629,3 +5629,36 @@ that was sitting at the bottom — including after the turn had finished.
   file, and an unavailable host contributes no exclusions. See ADR 0270,
   `04-ux/06-settings-ia.md` §2, `03-runtime/01-ipc-protocol.md` §12c, and
   E2E-SUBAGENT-settings-lists-builtin-defaults.
+
+## 2026-09-16 — The sidebar list rhythm is 1px / 2px / 8px
+
+- The sidebar's session lists had no rhythm to read. Rows and group headers sat
+  flush inside a group (a 0 gap), two project groups sat 2px apart, and the only
+  air was the 4px above a section label. Adjacent 28px rows painted rounded
+  hover fills that touched, so two rows read as one block, a collapsed group sat
+  as far from its neighbour as an expanded group with ten rows under it, and a
+  section label was closer to the rows above it than to the rows it introduces.
+- The lists now state one ladder: rows sit 1px apart, a project group header and
+  a section label sit 2px above their first row, a sidebar section sits 8px
+  below the one above it, and an expanded project group carries an 8px tail.
+- That tail belongs to the expanded group itself, so the spacing is decided by
+  the preceding group alone: an expanded group is followed by 8px whether the
+  next group is expanded or collapsed, and a collapsed group by 1px either way.
+  The scroller's own gap stays a uniform 1px and the difference lives in the
+  group body's inset, which animates away with the rows. Collapsing a group
+  therefore cannot fork the spacing on a neighbour's state, and cannot snap its
+  own tail.
+- The dated labels inside a project group are ordinary rows of that rhythm
+  rather than a second level of groups: they keep no state, no disclosure, and
+  no `aria-expanded`, and their own inset becomes a symmetric 4px instead of 6px
+  above and 2px below, so a label no longer outweighs the 1px row gap it sits in.
+- `space-0.25` (1px) joins the spacing scale as the hairline step for dense list
+  rhythms; the settings rail already used 1px between its navigation items. The
+  section-gap rule no longer claims the sidebar, which has its own rhythm.
+- Two row budgets follow the pitch: the pinned body still shows eight rows
+  (233px, was 224px) and the standalone Sessions body still shows five (146px,
+  was 140px), because the 28px row grid no longer fits its own gaps inside the
+  old numbers.
+- Renderer only: no protocol, storage, host, permission, or migration change.
+  See `04-ux/07-ui-design-system.md` §6.1 and §13, and
+  `04-ux/08-component-spec.md` §6.2 and §6.6.

@@ -129,7 +129,9 @@ test("sidebar shows a bounded standalone session list before retained projects",
   );
   assert.match(
     globalStyles,
-    /\.sidebar-session-group-body\.standalone\s*\{[\s\S]*?max-height:\s*140px;[\s\S]*?overflow-x:\s*hidden;[\s\S]*?overflow-y:\s*auto;/,
+    // `[^}]*`, not `[\s\S]*?`: the assertion must read this block, not a
+    // `max-height` in some later partial of the concatenated stylesheet.
+    /\.sidebar-session-group-body\.standalone\s*\{[^}]*max-height:\s*146px;[^}]*overflow-x:\s*hidden;[^}]*overflow-y:\s*auto;/,
   );
   assert.doesNotMatch(sidebarSource, /data-sidebar-project-group="temporary"/);
 });

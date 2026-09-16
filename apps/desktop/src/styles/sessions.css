@@ -473,7 +473,9 @@
   align-items: center;
   justify-content: space-between;
   min-height: 24px;
-  padding: 4px 4px 0;
+  /* The label opens a section, so its own top padding carries the 8px
+     section-to-section gap; the list below it supplies the 2px back. */
+  padding: 8px 4px 0;
   border-radius: var(--radius-sm);
 }
 
